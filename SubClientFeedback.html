@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Client Feedback Form — Project Future</title>
+    <style>
+      /* General Styles */
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f9fa;
+      }
+
+      /* Navigation */
+      nav {
+        background-color: #343a40;
+        display: flex;
+        justify-content: center;
+        padding: 0 20px;
+      }
+      .nav-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+      }
+      .nav-link {
+        display: block;
+        color: white;
+        padding: 20px 25px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background 0.3s;
+      }
+      .nav-item:hover .nav-link {
+        background-color: #495057;
+      }
+      .nav-item {
+        position: relative;
+      }
+      .dropdown {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: white;
+        min-width: 220px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        list-style: none;
+        padding: 10px 0;
+        border-radius: 0 0 4px 4px;
+      }
+      .dropdown li a {
+        color: #333;
+        padding: 12px 20px;
+        text-decoration: none;
+        display: block;
+        font-size: 0.9rem;
+      }
+      .dropdown li a:hover {
+        background-color: #f1f1f1;
+        color: #007bff;
+      }
+      .nav-item:hover .dropdown {
+        display: block;
+      }
+
+      /* Container */
+      .form-container {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 0 20px;
+      }
+      .form-card {
+        background: white;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      }
+
+      .form-title {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+        color: #212529;
+      }
+      .text-muted {
+        color: #6c757d;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #007bff;
+        padding-bottom: 15px;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+      .form-group label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #333;
+      }
+
+      .input-field {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ced4da;
+        border-radius: 6px;
+        box-sizing: border-box;
+        font-size: 1rem;
+      }
+      .input-readonly {
+        background-color: #e9ecef;
+        color: #495057;
+        border: 1px solid #ced4da;
+      }
+
+      /* Buttons */
+      .btn {
+        display: inline-block;
+        width: 100%;
+        padding: 15px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 1rem;
+        transition: background 0.3s;
+        margin-top: 10px;
+      }
+      .btn-primary {
+        background-color: #007bff;
+        color: white;
+      }
+      .btn-primary:hover {
+        background-color: #0056b3;
+      }
+
+      .success-hidden {
+        display: none;
+        margin-top: 20px;
+      }
+      .message-card {
+        background-color: #d4edda;
+        color: #155724;
+        padding: 20px;
+        border-radius: 8px;
+        border: 1px solid #c3e6cb;
+        text-align: center;
+      }
+    </style>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <a href="index.html" class="back-link">&larr; Back to home</a>
+      <h1>Project Future Hub</h1>
+    </header>
+
+    <nav>
+      <ul class="nav-list">
+        <li class="nav-item">
+          <a href="#" class="nav-link">Student</a>
+          <ul class="dropdown">
+            <li><a href="SubStudApp.html">Submit Student Application</a></li>
+            <li>
+              <a href="SubProDocDraft.html">Submit Project Document Draft</a>
+            </li>
+            <li>
+              <a href="SubmitFinalDocsReqEval.html"
+                >Submit Final Documents and Request Evaluation</a
+              >
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a href="#" class="nav-link">Client</a>
+          <ul class="dropdown">
+            <li><a href="SubClientApp.html">Submit Client Application</a></li>
+            <li><a href="CreateProject.html">Create Project</a></li>
+            <li><a href="SubAuthDoc.html">Submit Authorization Document</a></li>
+            <li><a href="SubClientFeedback.html">Submit Client Feedback</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a href="#" class="nav-link">FCRE Employee</a>
+          <ul class="dropdown">
+            <li><a href="AcceptRejectProject.html">Approve Projects</a></li>
+            <li><a href="FormTeams.html">Form Project Teams</a></li>
+            <li><a href="ProvideDocFeed.html">Provide Document Feedback</a></li>
+            <li>
+              <a href="AcceptRejectStudentApp.html"
+                >Student Application Approval</a
+              >
+            </li>
+            <li>
+              <a href="RecordClientInterviewDetails.html"
+                >Record Client Interview Details</a
+              >
+            </li>
+            <li><a href="SendTeamsMessage.html">Send Teams Message</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+    <main class="form-container">
+      <div class="form-card">
+        <h2 class="form-title">Client Feedback Form</h2>
+        <p class="text-muted">
+          Select your completed project to provide a formal assessment of the
+          student team's performance.
+        </p>
+
+        <form id="evaluationForm" onsubmit="return handleFormSubmit(event)">
+          <div class="form-group">
+            <label for="projectSelect">Select Your Project *</label>
+            <select
+              id="projectSelect"
+              class="input-field"
+              required
+              onchange="updateProjectDesc()"
+            >
+              <option value="">-- Choose a Project --</option>
+              <option value="PRJ-2001">PRJ-2001 — Acme Corp</option>
+              <option value="PRJ-2002">PRJ-2002 — GreenLeaf Non-Profit</option>
+              <option value="PRJ-2003">PRJ-2003 — HealthFirst Clinic</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Project Description</label>
+            <input
+              type="text"
+              id="projectDesc"
+              class="input-field input-readonly"
+              value="(description will auto-fill)"
+              readonly
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="feedbackText">Detailed Team Assessment *</label>
+            <textarea
+              id="feedbackText"
+              class="input-field"
+              style="height: 150px"
+              placeholder="Enter your detailed feedback regarding team communication, technical quality, and delivery..."
+              required
+            ></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="rating">Overall Satisfaction</label>
+            <select id="rating" class="input-field">
+              <option value="5">5 - Excellent</option>
+              <option value="4">4 - Good</option>
+              <option value="3">3 - Satisfactory</option>
+              <option value="2">2 - Needs Improvement</option>
+              <option value="1">1 - Poor</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="otherComments">Other Comments</label>
+            <textarea
+              id="otherComments"
+              class="input-field"
+              style="height: 80px"
+              placeholder="Any additional feedback or suggestions..."
+            ></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary">
+            Submit Evaluation
+          </button>
+        </form>
+
+        <div id="successCard" class="success-hidden">
+          <div class="message-card">
+            <h3>✅ Evaluation Submitted</h3>
+            <p>
+              Thank you for your feedback. This assessment has been logged for
+              FCRE review.
+            </p>
+            <button
+              class="btn btn-primary"
+              onclick="location.reload()"
+              style="width: auto; padding: 10px 20px"
+            >
+              Submit Another
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      function updateProjectDesc() {
+        const selection = document.getElementById("projectSelect").value;
+        const descField = document.getElementById("projectDesc");
+
+        if (selection === "PRJ-2001") {
+          descField.value =
+            "Customer portal with login, dashboard, and reporting features.";
+        } else if (selection === "PRJ-2002") {
+          descField.value =
+            "Donation tracking system with donor management and reports.";
+        } else if (selection === "PRJ-2003") {
+          descField.value =
+            "Patient appointment scheduling system with SMS reminders.";
+        } else {
+          descField.value = "(description will auto-fill)";
+        }
+      }
+
+      function handleFormSubmit(event) {
+        event.preventDefault();
+        document.getElementById("evaluationForm").style.display = "none";
+        document.getElementById("successCard").style.display = "block";
+        return false;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,4 @@
+Student: Kat 
+Client: Donovan (minus create project) 
+FCRE Employee: Leo - Anything relating to project (Form teams, Create Project (in Client), Approve Projects) 
+FCRE Employee: Sarah - Teams Message, Provide Doc Feedback, Student App Approval, Record Client Interview Details 

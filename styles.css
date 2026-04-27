@@ -1,0 +1,693 @@
+/* =========================================
+   1. GLOBAL STYLES & RESET
+   ========================================= */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+  line-height: 1.5;
+  font-size: 15px;
+}
+
+/* =========================================
+     2. HEADER
+     ========================================= */
+header {
+  background-color: #eeeeee;
+  padding: 40px 0;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+  position: relative;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+/* =========================================
+     3. TOP NAVIGATION WITH DROPDOWNS
+     ========================================= */
+nav {
+  background-color: #343a40;
+  display: flex;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  display: block;
+  color: white;
+  padding: 20px 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.nav-item:hover .nav-link {
+  background-color: #495057;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  min-width: 240px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  list-style: none;
+  padding: 8px 0;
+  border-radius: 0 0 4px 4px;
+}
+
+.dropdown li a {
+  color: #333;
+  padding: 10px 18px;
+  text-decoration: none;
+  display: block;
+  font-size: 0.9rem;
+}
+
+.dropdown li a:hover {
+  background-color: #f1f1f1;
+  color: #007bff;
+}
+
+.nav-item:hover .dropdown {
+  display: block;
+}
+
+/* =========================================
+     3b. LEGACY NAV (pipe-separated, underscore class)
+     ========================================= */
+.nav_links {
+  background-color: #e7f3ff;
+  padding: 12px 20px;
+  text-align: center;
+  border-bottom: 1px solid #c2dcf5;
+  margin-bottom: 30px;
+}
+
+.nav_links a {
+  text-decoration: none;
+  color: #007bff;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.nav_links a:not(:last-child):after {
+  content: " | ";
+  color: #adb5bd;
+  padding: 0 12px;
+}
+
+/* =========================================
+     4. BACK LINK
+     ========================================= */
+.back-link {
+  position: absolute;
+  top: 15px;
+  left: 25px;
+  text-decoration: none;
+  color: #666;
+  font-size: 0.9rem;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.back-link:hover {
+  color: #007bff;
+  text-decoration: underline;
+}
+
+/* =========================================
+     5. CONTAINERS & CARDS
+     ========================================= */
+.form-container {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+.container-narrow {
+  max-width: 680px;
+}
+
+.container-wide {
+  max-width: 1100px;
+}
+
+.form-card {
+  background: #fff;
+  border-radius: 4px;
+  padding: 24px 28px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e0e4e8;
+}
+
+.form-title {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 8px;
+  margin: 0 0 12px 0;
+  font-weight: 600;
+}
+
+.section-divider {
+  border: 0;
+  border-top: 1px solid #e0e0e0;
+  margin: 20px 0 16px 0;
+}
+
+.text-muted {
+  color: #6c757d;
+  margin-bottom: 16px;
+  font-size: 0.92rem;
+}
+
+.required-star {
+  color: #dc3545;
+}
+
+/* =========================================
+     6. FORM ELEMENTS
+     ========================================= */
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #34495e;
+  font-size: 0.9rem;
+}
+
+.inline-form-group {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 9px 11px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  box-sizing: border-box;
+  font-family: inherit;
+  background-color: #fff;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.15);
+}
+
+.input-readonly {
+  background-color: #f5f6f7;
+  border-color: #d0d4d8;
+  color: #555;
+  cursor: not-allowed;
+}
+
+textarea.input-field {
+  resize: vertical;
+  min-height: 70px;
+}
+
+/* =========================================
+     7. BUTTONS
+     ========================================= */
+.btn {
+  display: inline-block;
+  background-color: #007bff;
+  color: #ffffff;
+  padding: 9px 18px;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.92rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+.btn-full {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.btn-accept {
+  background-color: #28a745;
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  margin-right: 4px;
+}
+
+.btn-accept:hover {
+  background-color: #218838;
+}
+
+.btn-reject {
+  background-color: #dc3545;
+  padding: 6px 14px;
+  font-size: 0.85rem;
+}
+
+.btn-reject:hover {
+  background-color: #c82333;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+/* =========================================
+     8. TABLES
+     ========================================= */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+  background-color: #fff;
+  border: 1px solid #e0e4e8;
+}
+
+.data-table thead tr {
+  background-color: #007bff;
+  color: white;
+  text-align: left;
+}
+
+.data-table th,
+.data-table td {
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: middle;
+  font-size: 0.9rem;
+}
+
+.data-table tbody tr {
+  border-top: 1px solid #e8ecef;
+}
+
+.data-table tbody tr:nth-child(even) {
+  background-color: #fafbfc;
+}
+
+.data-table tbody tr:hover {
+  background-color: #f0f7ff;
+}
+
+.cell-detail {
+  background-color: #f8fbff !important;
+  border-left: 3px solid #007bff;
+  font-size: 0.88rem;
+  color: #555;
+}
+
+.spacer-row td {
+  background-color: transparent !important;
+  height: 8px;
+  padding: 0 !important;
+  border: none !important;
+}
+
+/* =========================================
+     9. BANNERS
+     ========================================= */
+.banner {
+  padding: 10px 16px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  font-size: 0.92rem;
+  border: 1px solid transparent;
+}
+
+.banner-success {
+  background-color: #e8f5ea;
+  color: #1e6b32;
+  border-color: #c3e6cb;
+}
+
+.banner-error {
+  background-color: #fdeeef;
+  color: #8a1c28;
+  border-color: #f5b7b1;
+}
+
+.banner-info {
+  background-color: #eef6ff;
+  color: #1e4b82;
+  border-color: #bcd8f5;
+}
+
+/* =========================================
+     10. INLINE SAVED STATE + LEGACY SUCCESS MESSAGE
+     ========================================= */
+.saved-state {
+  display: none;
+  padding: 14px 18px;
+  background-color: #e8f5ea;
+  border: 1px solid #c3e6cb;
+  border-radius: 4px;
+  color: #1e6b32;
+}
+
+.saved-state strong {
+  color: #14532d;
+}
+
+.saved-state a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.saved-state a:hover {
+  text-decoration: underline;
+}
+
+.saved-state .saved-actions {
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+/* Legacy: used by older pages with <div class="message-card success-hidden"> */
+.success-hidden {
+  display: none;
+}
+
+.message-card {
+  margin-top: 20px;
+  padding: 14px 18px;
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.flex-body-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* =========================================
+     11. MODAL (LEGACY)
+     ========================================= */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.55);
+  z-index: 9999;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 32px 36px;
+  border-radius: 10px;
+  max-width: 450px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+}
+
+.modal-content h2 {
+  margin: 0 0 8px 0;
+  color: #2c3e50;
+  font-size: 1.3rem;
+}
+
+.modal-content p {
+  color: #6c757d;
+  margin: 0 0 20px 0;
+  font-size: 0.95rem;
+}
+
+/* =========================================
+     12. HUB / HOMEPAGE
+     ========================================= */
+.hero-section {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.hero-title {
+  font-size: 1.6rem;
+  color: #2c3e50;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.hero-subtitle {
+  color: #6c757d;
+  font-size: 0.95rem;
+  margin-bottom: 24px;
+}
+
+.role-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.role-panel {
+  background: #fff;
+  border-radius: 4px;
+  padding: 18px 20px;
+  border: 1px solid #e0e4e8;
+}
+
+.role-panel h3 {
+  margin: 0 0 4px 0;
+  font-size: 1.05rem;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.role-panel p {
+  margin: 0 0 12px 0;
+  color: #6c757d;
+  font-size: 0.88rem;
+}
+
+.role-panel ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.role-panel li {
+  padding: 3px 0;
+}
+
+.role-panel a {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.role-panel a:hover {
+  text-decoration: underline;
+}
+
+/* =========================================
+     13. FORM TEAMS SPECIFIC
+     ========================================= */
+.project-brief {
+  background-color: #f8fbff;
+  border: 1px solid #c2dcf5;
+  border-radius: 4px;
+  padding: 18px 20px;
+  margin-bottom: 24px;
+}
+
+.project-brief-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.project-brief h3 {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 1.05rem;
+}
+
+.project-badge {
+  background: #007bff;
+  color: white;
+  padding: 3px 10px;
+  border-radius: 3px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.selection-zone-locked {
+  opacity: 0.35;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.selection-zone-unlocked {
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.3s ease;
+}
+
+.captain-radio {
+  width: 16px;
+  height: 16px;
+  accent-color: #007bff;
+  cursor: pointer;
+}
+
+/* =========================================
+     14. RATING (CLIENT FEEDBACK)
+     ========================================= */
+.rating-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+  gap: 12px;
+}
+
+.rating-row:last-child {
+  border-bottom: none;
+}
+
+.rating-label {
+  font-weight: 500;
+  color: #34495e;
+  flex: 1;
+  font-size: 0.92rem;
+}
+
+.rating-options {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.rating-options label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.78rem;
+  color: #666;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+.rating-options input[type="radio"] {
+  accent-color: #007bff;
+  margin-bottom: 2px;
+  width: 15px;
+  height: 15px;
+}
+
+/* =========================================
+     15. FOOTER
+     ========================================= */
+footer {
+  text-align: center;
+  padding: 24px 20px;
+  color: #6c757d;
+  font-size: 0.82rem;
+  border-top: 1px solid #ddd;
+  margin-top: 50px;
+}
+
+footer a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* =========================================
+     16. RESPONSIVE
+     ========================================= */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 1.8rem;
+  }
+  .nav-list {
+    flex-wrap: wrap;
+  }
+  .nav-link {
+    padding: 12px 14px;
+  }
+  .form-container {
+    padding: 10px;
+  }
+  .form-card {
+    padding: 16px;
+  }
+  .inline-form-group {
+    flex-direction: column;
+    gap: 0;
+  }
+  .rating-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .data-table th,
+  .data-table td {
+    padding: 7px;
+    font-size: 0.82rem;
+  }
+}

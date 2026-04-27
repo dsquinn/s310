@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Project — Project Future</title>
+    <style>
+      /* --- NAVIGATION STYLES --- */
+      nav {
+        background-color: #343a40;
+        display: flex;
+        justify-content: center;
+        padding: 0 20px;
+      }
+      .nav-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+      }
+      .nav-item {
+        position: relative;
+      }
+      .nav-link {
+        display: block;
+        color: white;
+        padding: 20px 25px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background 0.3s;
+      }
+      .nav-item:hover .nav-link {
+        background-color: #495057;
+      }
+      .dropdown {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: white;
+        min-width: 220px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        list-style: none;
+        padding: 10px 0;
+        border-radius: 0 0 4px 4px;
+      }
+      .dropdown li a {
+        color: #333;
+        padding: 12px 20px;
+        text-decoration: none;
+        display: block;
+        font-size: 0.9rem;
+      }
+      .dropdown li a:hover {
+        background-color: #f1f1f1;
+        color: #007bff;
+      }
+      .nav-item:hover .dropdown {
+        display: block;
+      }
+    </style>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body onload="generateProjectID()">
+    <header>
+      <a href="index.html" class="back-link">&larr; Back to home</a>
+      <h1>Project Future Hub</h1>
+    </header>
+
+    <nav>
+      <ul class="nav-list">
+        <li class="nav-item">
+          <a href="#" class="nav-link">Student</a>
+          <ul class="dropdown">
+            <li><a href="SubStudApp.html">Submit Student Application</a></li>
+            <li>
+              <a href="SubProDocDraft.html">Submit Project Document Draft</a>
+            </li>
+            <li>
+              <a href="SubmitFinalDocsReqEval.html"
+                >Submit Final Documents and Request Evaluation</a
+              >
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a href="#" class="nav-link">Client</a>
+          <ul class="dropdown">
+            <li><a href="SubClientApp.html">Submit Client Application</a></li>
+            <li><a href="CreateProject.html">Create Project</a></li>
+            <li><a href="SubAuthDoc.html">Submit Authorization Document</a></li>
+            <li><a href="SubClientFeedback.html">Submit Client Feedback</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a href="#" class="nav-link">FCRE Employee</a>
+          <ul class="dropdown">
+            <li><a href="AcceptRejectProject.html">Approve Projects</a></li>
+            <li><a href="FormTeams.html">Form Project Teams</a></li>
+            <li><a href="ProvideDocFeed.html">Provide Document Feedback</a></li>
+            <li>
+              <a href="AcceptRejectStudentApp.html"
+                >Student Application Approval</a
+              >
+            </li>
+            <li>
+              <a href="RecordClientInterviewDetails.html"
+                >Record Client Interview Details</a
+              >
+            </li>
+            <li><a href="SendTeamsMessage.html">Send Teams Message</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+    <main class="form-container container-narrow">
+      <div class="form-card">
+        <h2 class="form-title">Create Project</h2>
+        <p class="text-muted">
+          Submit your project details below. Your project will be linked to your
+          existing Client ID and assigned a new Project ID automatically.
+        </p>
+
+        <form id="createProjectForm">
+          <div class="form-group">
+            <label>Project ID (Auto-Generated)</label>
+            <input
+              type="text"
+              id="projectID"
+              readonly
+              class="input-field input-readonly"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="clientSelect"
+              >Client ID <span class="required-star">*</span></label
+            >
+            <select id="clientSelect" class="input-field" required>
+              <option value="">-- Select Your Client ID --</option>
+              <option value="CLT-1001">CLT-1001 — Acme Corp</option>
+              <option value="CLT-1002">CLT-1002 — GreenLeaf Non-Profit</option>
+              <option value="CLT-1003">CLT-1003 — HealthFirst Clinic</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="projectDetails"
+              >Project Details <span class="required-star">*</span></label
+            >
+            <textarea
+              id="projectDetails"
+              class="input-field"
+              rows="6"
+              placeholder="Describe the project requirements..."
+              required
+            ></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="otherComments">Other Comments</label>
+            <textarea
+              id="otherComments"
+              class="input-field"
+              rows="3"
+              placeholder="Additional information..."
+            ></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-full">Submit Project</button>
+        </form>
+      </div>
+    </main>
+
+    <div id="confirmationModal" class="modal-overlay">
+      <div class="form-card modal-content">
+        <div style="font-size: 3rem; margin-bottom: 15px">🚀</div>
+        <h2 style="color: #28a745; margin-top: 0">
+          Project Submitted Successfully!
+        </h2>
+        <p class="text-muted">
+          Your Project ID is <strong><span id="displayID"></span></strong>.
+          The FCRE team has been notified.
+        </p>
+
+        <div
+          style="
+            background-color: #f8fbff;
+            border: 1px solid #c2dcf5;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: left;
+          "
+        >
+          <p style="margin: 0; font-size: 0.9rem; color: #007bff">
+            <strong>Next Steps:</strong> You will receive an authorization
+            document once the project brief is approved.
+          </p>
+        </div>
+
+        <button
+          class="btn btn-full"
+          onclick="window.location.href='index.html'"
+        >
+          Return to Hub
+        </button>
+      </div>
+    </div>
+
+    <script>
+      function generateProjectID() {
+        const projNum = Math.floor(2000 + Math.random() * 8000);
+        document.getElementById("projectID").value = "PRJ-" + projNum;
+      }
+
+      document
+        .getElementById("createProjectForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          document.getElementById("displayID").innerText =
+            document.getElementById("projectID").value;
+          // Show the centered high-fidelity popup
+          document.getElementById("confirmationModal").style.display = "flex";
+        });
+    </script>
+  </body>
+</html>

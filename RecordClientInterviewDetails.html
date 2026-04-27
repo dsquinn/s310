@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Record Client Interview — Project Future</title>
+    <style>
+      /* General Styles (Matching Template) */
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f9fa;
+      }
+
+      /* Navigation Bar Styles */
+      nav {
+        background-color: #343a40;
+        display: flex;
+        justify-content: center;
+        padding: 0 20px;
+      }
+
+      .nav-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+      }
+
+      .nav-item {
+        position: relative;
+      }
+
+      .nav-link {
+        display: block;
+        color: white;
+        padding: 20px 25px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background 0.3s;
+      }
+
+      .nav-item:hover .nav-link {
+        background-color: #495057;
+      }
+
+      /* Dropdown Menu Styles */
+      .dropdown {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: white;
+        min-width: 220px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        list-style: none;
+        padding: 10px 0;
+        border-radius: 0 0 4px 4px;
+      }
+
+      .dropdown li a {
+        color: #333;
+        padding: 12px 20px;
+        text-decoration: none;
+        display: block;
+        font-size: 0.9rem;
+      }
+
+      .dropdown li a:hover {
+        background-color: #f1f1f1;
+        color: #007bff;
+      }
+
+      .nav-item:hover .dropdown {
+        display: block;
+      }
+
+      /* Form Styles */
+      .form-container {
+        padding: 40px 20px;
+        display: flex;
+        justify-content: center;
+      }
+
+      .form-card {
+        background: white;
+        padding: 40px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        max-width: 700px;
+        width: 100%;
+      }
+
+      .form-title {
+        margin-top: 0;
+        color: #212529;
+      }
+
+      .text-muted {
+        color: #6c757d;
+        font-size: 0.95rem;
+      }
+
+      .section-divider {
+        margin: 25px 0;
+        border: 0;
+        border-top: 1px solid #eee;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: #495057;
+      }
+
+      .input-field {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 1rem;
+      }
+
+      .required-star {
+        color: #dc3545;
+      }
+
+      .btn {
+        padding: 12px 25px;
+        font-weight: 600;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: 0.2s;
+        text-decoration: none;
+        display: inline-block;
+        text-align: center;
+      }
+
+      .btn-full {
+        width: 100%;
+        background-color: #007bff;
+        color: white;
+        border: none;
+      }
+
+      .btn-full:hover {
+        background-color: #0056b3;
+      }
+
+      .success-hidden {
+        display: none;
+      }
+
+      .message-card {
+        text-align: center;
+        padding: 20px;
+      }
+    </style>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <a href="index.html" class="back-link">&larr; Back to home</a>
+      <h1>Project Future Hub</h1>
+    </header>
+
+    <nav>
+      <ul class="nav-list">
+        <li class="nav-item">
+          <a href="#" class="nav-link">Student</a>
+          <ul class="dropdown">
+            <li><a href="SubStudApp.html">Submit Student Application</a></li>
+            <li>
+              <a href="SubProDocDraft.html">Submit Project Document Draft</a>
+            </li>
+            <li>
+              <a href="SubmitFinalDocsReqEval.html"
+                >Submit Final Documents and Request Evaluation</a
+              >
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a href="#" class="nav-link">Client</a>
+          <ul class="dropdown">
+            <li><a href="SubClientApp.html">Submit Client Application</a></li>
+            <li><a href="CreateProject.html">Create Project</a></li>
+            <li><a href="SubAuthDoc.html">Submit Authorization Document</a></li>
+            <li><a href="SubClientFeedback.html">Submit Client Feedback</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a href="#" class="nav-link">FCRE Employee</a>
+          <ul class="dropdown">
+            <li><a href="AcceptRejectProject.html">Approve Projects</a></li>
+            <li><a href="FormTeams.html">Form Project Teams</a></li>
+            <li><a href="ProvideDocFeed.html">Provide Document Feedback</a></li>
+            <li>
+              <a href="AcceptRejectStudentApp.html"
+                >Student Application Approval</a
+              >
+            </li>
+            <li>
+              <a href="RecordClientInterviewDetails.html"
+                >Record Client Interview Details</a
+              >
+            </li>
+            <li><a href="SendTeamsMessage.html">Send Teams Message</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+    <main class="form-container">
+      <div class="form-card">
+        <h2 class="form-title">Record Client Interview Details</h2>
+        <p class="text-muted">
+          After meeting with the client, document the interview details and
+          your assessment of the project. Interview scheduling (email, Zoom,
+          etc.) happens outside the system.
+        </p>
+
+        <hr class="section-divider" />
+
+        <form id="interviewForm" onsubmit="return submitInterview(event)">
+          <div class="form-group">
+            <label for="projectSelect"
+              >Select Project <span class="required-star">*</span></label
+            >
+            <select id="projectSelect" class="input-field" required>
+              <option value="">-- Choose a Project --</option>
+              <option value="PRJ-2001">PRJ-2001 — Acme Corp</option>
+              <option value="PRJ-2002">PRJ-2002 — GreenLeaf Non-Profit</option>
+              <option value="PRJ-2003">PRJ-2003 — HealthFirst Clinic</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="interviewDate">
+              Interview Date <span class="required-star">*</span>
+            </label>
+            <input
+              type="date"
+              id="interviewDate"
+              class="input-field"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="interviewNotes"
+              >Interview Notes &amp; Assessment
+              <span class="required-star">*</span></label
+            >
+            <textarea
+              id="interviewNotes"
+              class="input-field"
+              style="height: 200px"
+              placeholder="Record notes from the client interview and your assessment of the project (scope, feasibility, recommendation)..."
+              required
+            ></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="fitScore">Overall Recommendation</label>
+            <select id="fitScore" class="input-field">
+              <option value="excellent">Strongly Recommend Acceptance</option>
+              <option value="good">Recommend Acceptance</option>
+              <option value="neutral">Neutral / Needs Review</option>
+              <option value="poor">Recommend Rejection</option>
+            </select>
+          </div>
+
+          <div style="margin-top: 30px">
+            <button type="submit" class="btn btn-full">
+              Save Interview Notes
+            </button>
+          </div>
+        </form>
+
+        <div id="successCard" class="success-hidden">
+          <div class="message-card">
+            <h3 style="color: #155724">✅ Notes Successfully Recorded</h3>
+            <p>
+              The interview details for
+              <strong id="displayProject"></strong> have been saved. These
+              notes will be visible when reviewing this project for acceptance.
+            </p>
+            <button
+              class="btn"
+              onclick="location.reload()"
+              style="background-color: #28a745; border: none; color: white"
+            >
+              Record Another Interview
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      function submitInterview(event) {
+        event.preventDefault();
+
+        const selectedProject = document.getElementById("projectSelect");
+        const projectName =
+          selectedProject.options[selectedProject.selectedIndex].text;
+
+        // Map data to UI
+        document.getElementById("displayProject").innerText = projectName;
+
+        // Toggle UI
+        document.getElementById("interviewForm").style.display = "none";
+        document.getElementById("successCard").style.display = "block";
+
+        return false;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Review Student Applications — Project Future</title>
+    <style>
+      /* General Styles */
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f9fa;
+      }
+
+      /* Navigation Bar Styles */
+      nav {
+        background-color: #343a40;
+        display: flex;
+        justify-content: center;
+        padding: 0 20px;
+      }
+
+      .nav-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+      }
+
+      .nav-item {
+        position: relative;
+      }
+
+      .nav-link {
+        display: block;
+        color: white;
+        padding: 20px 25px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background 0.3s;
+      }
+
+      .nav-item:hover .nav-link {
+        background-color: #495057;
+      }
+
+      /* Dropdown Menu Styles */
+      .dropdown {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: white;
+        min-width: 220px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        list-style: none;
+        padding: 10px 0;
+        border-radius: 0 0 4px 4px;
+      }
+
+      .dropdown li a {
+        color: #333;
+        padding: 12px 20px;
+        text-decoration: none;
+        display: block;
+        font-size: 0.9rem;
+      }
+
+      .dropdown li a:hover {
+        background-color: #f1f1f1;
+        color: #007bff;
+      }
+
+      .nav-item:hover .dropdown {
+        display: block;
+      }
+
+      /* Table and Content Styles */
+      .form-container {
+        padding: 40px;
+        max-width: 1000px;
+        margin: auto;
+      }
+
+      .data-table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        margin-top: 20px;
+      }
+
+      .data-table th {
+        background-color: #f1f3f5;
+        text-align: left;
+        padding: 15px;
+        border-bottom: 2px solid #dee2e6;
+      }
+
+      .data-table td {
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+      }
+
+      .btn {
+        padding: 8px 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: 600;
+        margin-right: 5px;
+        transition: opacity 0.2s;
+      }
+
+      .btn:hover {
+        opacity: 0.8;
+      }
+
+      .btn-accept {
+        background-color: #28a745;
+        color: white;
+      }
+
+      .btn-reject {
+        background-color: #dc3545;
+        color: white;
+      }
+
+      .text-muted {
+        color: #6c757d;
+        font-size: 0.9rem;
+      }
+
+      .status-msg {
+        display: none;
+        margin-top: 20px;
+        padding: 15px;
+        border-radius: 4px;
+        text-align: center;
+        background-color: #d4edda;
+        color: #155724;
+      }
+    </style>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <a href="index.html" class="back-link">&larr; Back to home</a>
+      <h1 style="text-align: center; padding: 20px">Project Future Hub</h1>
+    </header>
+
+    <nav>
+      <ul class="nav-list">
+        <li class="nav-item">
+          <a href="#" class="nav-link">Student</a>
+          <ul class="dropdown">
+            <li><a href="SubStudApp.html">Submit Student Application</a></li>
+            <li>
+              <a href="SubProDocDraft.html">Submit Project Document Draft</a>
+            </li>
+            <li>
+              <a href="SubmitFinalDocsReqEval.html"
+                >Submit Final Documents and Request Evaluation</a
+              >
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a href="#" class="nav-link">Client</a>
+          <ul class="dropdown">
+            <li><a href="SubClientApp.html">Submit Client Application</a></li>
+            <li><a href="CreateProject.html">Create Project</a></li>
+            <li><a href="SubAuthDoc.html">Submit Authorization Document</a></li>
+            <li><a href="SubClientFeedback.html">Submit Client Feedback</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a href="#" class="nav-link">FCRE Employee</a>
+          <ul class="dropdown">
+            <li><a href="AcceptRejectProject.html">Approve Projects</a></li>
+            <li><a href="FormTeams.html">Form Project Teams</a></li>
+            <li><a href="ProvideDocFeed.html">Provide Document Feedback</a></li>
+            <li>
+              <a href="AcceptRejectStudentApp.html"
+                >Student Application Approval</a
+              >
+            </li>
+            <li>
+              <a href="RecordClientInterviewDetails.html"
+                >Record Client Interview Details</a
+              >
+            </li>
+            <li><a href="SendTeamsMessage.html">Send Teams Message</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="form-container">
+      <h2>Review Student Applications</h2>
+      <p class="text-muted">
+        Management Committee: Review pending student applicants, including
+        their resume and application letter, and decide who joins the program.
+      </p>
+
+      <div id="statusNotification" class="status-msg">
+        Action processed successfully!
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Applicant ID</th>
+            <th>Name</th>
+            <th>Major</th>
+            <th>Class Standing</th>
+            <th>Documents</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>APP-3001</td>
+            <td>Jane Doe</td>
+            <td>Computer Science</td>
+            <td>Junior</td>
+            <td>
+              <a href="#" onclick="return false;">Resume</a> |
+              <a href="#" onclick="return false;">Letter</a>
+            </td>
+            <td>
+              <button
+                class="btn btn-accept"
+                onclick="processAction('Jane Doe', 'Accepted')"
+              >
+                Accept
+              </button>
+              <button
+                class="btn btn-reject"
+                onclick="processAction('Jane Doe', 'Rejected')"
+              >
+                Reject
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>APP-3002</td>
+            <td>John Smith</td>
+            <td>Finance</td>
+            <td>Senior</td>
+            <td>
+              <a href="#" onclick="return false;">Resume</a> |
+              <a href="#" onclick="return false;">Letter</a>
+            </td>
+            <td>
+              <button
+                class="btn btn-accept"
+                onclick="processAction('John Smith', 'Accepted')"
+              >
+                Accept
+              </button>
+              <button
+                class="btn btn-reject"
+                onclick="processAction('John Smith', 'Rejected')"
+              >
+                Reject
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>APP-3003</td>
+            <td>Emily Chen</td>
+            <td>Information Systems</td>
+            <td>Sophomore</td>
+            <td>
+              <a href="#" onclick="return false;">Resume</a> |
+              <a href="#" onclick="return false;">Letter</a>
+            </td>
+            <td>
+              <button
+                class="btn btn-accept"
+                onclick="processAction('Emily Chen', 'Accepted')"
+              >
+                Accept
+              </button>
+              <button
+                class="btn btn-reject"
+                onclick="processAction('Emily Chen', 'Rejected')"
+              >
+                Reject
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script>
+      function processAction(name, action) {
+        const msg = document.getElementById("statusNotification");
+        msg.innerText = `${name} has been ${action}.`;
+        msg.style.display = "block";
+
+        // Hide the message after 3 seconds
+        setTimeout(() => {
+          msg.style.display = "none";
+        }, 3000);
+      }
+    </script>
+  </body>
+</html>

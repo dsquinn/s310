@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Submit Final Documents & Request Evaluation</title>
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+      /* General Styles */
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f9fa;
+        color: #333;
+      }
+
+      /* Navigation Bar Styles */
+      nav {
+        background-color: #343a40;
+        display: flex;
+        justify-content: center;
+        padding: 0 20px;
+      }
+
+      .nav-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+      }
+
+      .nav-item {
+        position: relative;
+      }
+
+      .nav-link {
+        display: block;
+        color: white;
+        padding: 20px 25px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background 0.3s;
+      }
+
+      .nav-item:hover .nav-link {
+        background-color: #495057;
+      }
+
+      /* Dropdown Menu Styles */
+      .dropdown {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: white;
+        min-width: 220px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        list-style: none;
+        padding: 10px 0;
+        border-radius: 0 0 4px 4px;
+      }
+
+      .dropdown li a {
+        color: #333;
+        padding: 12px 20px;
+        text-decoration: none;
+        display: block;
+        font-size: 0.9rem;
+      }
+
+      .dropdown li a:hover {
+        background-color: #f1f1f1;
+        color: #007bff;
+      }
+
+      .nav-item:hover .dropdown {
+        display: block;
+      }
+
+      /* Back Link */
+      .back-link {
+        position: absolute;
+        top: 15px;
+        left: 20px;
+        color: #666;
+        text-decoration: none;
+        font-size: 0.88rem;
+        font-weight: 600;
+        z-index: 10;
+      }
+
+      .back-link:hover {
+        color: #007bff;
+        text-decoration: underline;
+      }
+
+      /* Form Card */
+      .form-container {
+        max-width: 650px;
+        margin: 30px auto;
+        background: #fff;
+        border-radius: 10px;
+        padding: 32px 36px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+        border: 1px solid #e8ecef;
+      }
+
+      .form-title {
+        font-size: 1.7rem;
+        color: #2c3e50;
+        border-bottom: 2px solid #007bff;
+        padding-bottom: 10px;
+        margin: 0 0 10px 0;
+        font-weight: 600;
+      }
+
+      .form-container > p {
+        color: #6c757d;
+        font-size: 0.95rem;
+        margin: 0 0 24px 0;
+      }
+
+      .required-star {
+        color: #dc3545;
+        font-weight: bold;
+      }
+
+      /* Form fields */
+      .upload-group {
+        margin-bottom: 18px;
+      }
+
+      .upload-group label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 6px;
+        color: #34495e;
+        font-size: 0.92rem;
+      }
+
+      .upload-group input[type="text"],
+      .upload-group select,
+      .upload-group input[type="file"] {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 0.95rem;
+        box-sizing: border-box;
+        font-family: inherit;
+        background-color: #fff;
+        transition: border-color 0.15s, box-shadow 0.15s;
+      }
+
+      .upload-group select:focus,
+      .upload-group input[type="text"]:focus,
+      .upload-group input[type="file"]:focus {
+        outline: none;
+        border-color: #007bff;
+        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+      }
+
+      .input-readonly {
+        background-color: #f5f6f7 !important;
+        border-color: #d0d4d8 !important;
+        color: #555 !important;
+        cursor: not-allowed;
+      }
+
+      /* Button */
+      .btn {
+        display: inline-block;
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 22px;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.15s;
+      }
+
+      .btn:hover {
+        background-color: #0056b3;
+      }
+
+      .btn-full {
+        width: 100%;
+        padding: 12px;
+        margin-top: 10px;
+        font-size: 1rem;
+      }
+
+      /* Modal */
+      .modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+      }
+
+      .modal-content {
+        background: #fff;
+        border-radius: 10px;
+        padding: 36px;
+        max-width: 460px;
+        width: 90%;
+        text-align: center;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .modal-content h2 {
+        color: #2c3e50;
+        margin-bottom: 12px;
+      }
+
+      .modal-content p {
+        color: #6c757d;
+        margin-bottom: 10px;
+      }
+
+      .modal-content .btn {
+        margin-top: 16px;
+      }
+
+      /* Footer */
+      footer {
+        text-align: center;
+        padding: 40px;
+        color: #666;
+        font-size: 0.85rem;
+        border-top: 1px solid #ddd;
+        margin-top: 50px;
+      }
+
+      /* Responsive */
+      @media (max-width: 640px) {
+        .form-container {
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+
+  <body onload="generateDocID()">
+    <header>
+      <a href="index.html" class="back-link">&larr; Back to home</a>
+      <h1>Project Future Hub</h1>
+    </header>
+
+    <nav>
+      <ul class="nav-list">
+        <li class="nav-item">
+          <a href="#" class="nav-link">Student</a>
+          <ul class="dropdown">
+            <li><a href="SubStudApp.html">Submit Student Application</a></li>
+            <li>
+              <a href="SubProDocDraft.html">Submit Project Document Draft</a>
+            </li>
+            <li>
+              <a href="SubmitFinalDocsReqEval.html"
+                >Submit Final Documents and Request Evaluation</a
+              >
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a href="#" class="nav-link">Client</a>
+          <ul class="dropdown">
+            <li><a href="SubClientApp.html">Submit Client Application</a></li>
+            <li><a href="CreateProject.html">Create Project</a></li>
+            <li><a href="SubAuthDoc.html">Submit Authorization Document</a></li>
+            <li><a href="SubClientFeedback.html">Submit Client Feedback</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a href="#" class="nav-link">FCRE Employee</a>
+          <ul class="dropdown">
+            <li><a href="AcceptRejectProject.html">Approve Projects</a></li>
+            <li><a href="FormTeams.html">Form Project Teams</a></li>
+            <li><a href="ProvideDocFeed.html">Provide Document Feedback</a></li>
+            <li>
+              <a href="AcceptRejectStudentApp.html"
+                >Student Application Approval</a
+              >
+            </li>
+            <li>
+              <a href="RecordClientInterviewDetails.html"
+                >Record Client Interview Details</a
+              >
+            </li>
+            <li><a href="SendTeamsMessage.html">Send Teams Message</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="form-container">
+      <h2 class="form-title">Submit Final Documents & Request Evaluation</h2>
+
+      <p>
+        Upload the final version of your project deliverable. When the Final
+        Report and Final Presentation have both been submitted, the client will
+        be automatically notified to evaluate the project. Fields marked
+        <span class="required-star">*</span> are required.
+      </p>
+
+      <form id="finalDocsForm">
+        <div class="upload-group">
+          <label for="documentID">Document ID (Auto-Generated)</label>
+          <input type="text" id="documentID" class="input-readonly" readonly />
+        </div>
+
+        <div class="upload-group">
+          <label for="projectSelect">
+            Project <span class="required-star">*</span>
+          </label>
+          <select id="projectSelect" required>
+            <option value="">-- Select Your Project --</option>
+            <option value="PRJ-2001">PRJ-2001 — Acme Corp</option>
+            <option value="PRJ-2002">PRJ-2002 — GreenLeaf</option>
+            <option value="PRJ-2003">PRJ-2003 — HealthFirst</option>
+          </select>
+        </div>
+
+        <div class="upload-group">
+          <label for="docType">
+            Document Type <span class="required-star">*</span>
+          </label>
+          <select id="docType" required>
+            <option value="">-- Select Document Type --</option>
+            <option value="charter">Project Charter</option>
+            <option value="report">Final Report</option>
+            <option value="presentation">Final Presentation</option>
+          </select>
+        </div>
+
+        <div class="upload-group">
+          <label for="fileUpload">
+            Upload Document <span class="required-star">*</span>
+          </label>
+          <input
+            type="file"
+            id="fileUpload"
+            accept=".pdf,.doc,.docx,.ppt,.pptx"
+            required
+          />
+        </div>
+
+        <button type="submit" class="btn btn-full">
+          Submit Final Document
+        </button>
+      </form>
+    </div>
+
+    <!-- CONFIRMATION MODAL -->
+    <div id="modalOverlay" class="modal-overlay">
+      <div class="modal-content">
+        <h2>Submission Successful</h2>
+        <p>Your final document has been submitted.</p>
+        <p>
+          If all final documents are now complete, the system will notify the
+          client and request evaluation.
+        </p>
+        <button class="btn" onclick="closeModal()">Close</button>
+      </div>
+    </div>
+
+    <footer>
+      Project Future Integrated Management System © 2026 |
+      <a
+        href="mailto:support@fcre.iu.edu"
+        style="color: #007bff; text-decoration: none"
+      >
+        Technical Support
+      </a>
+    </footer>
+
+    <script>
+      function generateDocID() {
+        const docNum = Math.floor(7000 + Math.random() * 1000);
+        document.getElementById("documentID").value = "DOC-" + docNum;
+      }
+
+      const form = document.getElementById("finalDocsForm");
+      const modal = document.getElementById("modalOverlay");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        modal.style.display = "flex";
+      });
+
+      function closeModal() {
+        modal.style.display = "none";
+        form.reset();
+        generateDocID();
+      }
+    </script>
+  </body>
+</html>

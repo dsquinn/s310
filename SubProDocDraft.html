@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Submit Project Document Draft — Project Future</title>
+    <style>
+      /* General Styles */
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f9fa;
+      }
+
+      /* Navigation Bar Styles */
+      nav {
+        background-color: #343a40;
+        display: flex;
+        justify-content: center;
+        padding: 0 20px;
+      }
+
+      .nav-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+      }
+
+      .nav-item {
+        position: relative; /* Essential for dropdown positioning */
+      }
+
+      .nav-link {
+        display: block;
+        color: white;
+        padding: 20px 25px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background 0.3s;
+      }
+
+      .nav-item:hover .nav-link {
+        background-color: #495057;
+      }
+
+      /* Dropdown Menu Styles */
+      .dropdown {
+        display: none; /* Hidden by default */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: white;
+        min-width: 220px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        list-style: none;
+        padding: 10px 0;
+        border-radius: 0 0 4px 4px;
+      }
+
+      .dropdown li a {
+        color: #333;
+        padding: 12px 20px;
+        text-decoration: none;
+        display: block;
+        font-size: 0.9rem;
+      }
+
+      .dropdown li a:hover {
+        background-color: #f1f1f1;
+        color: #007bff;
+      }
+
+      .nav-item:hover .dropdown {
+        display: block;
+      }
+    </style>
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body onload="generateDocID()">
+    <header>
+      <a href="index.html" class="back-link">&larr; Back to home</a>
+      <h1>Project Future Hub</h1>
+    </header>
+
+    <nav>
+      <ul class="nav-list">
+        <li class="nav-item">
+          <a href="#" class="nav-link">Student</a>
+          <ul class="dropdown">
+            <li><a href="SubStudApp.html">Submit Student Application</a></li>
+            <li>
+              <a href="SubProDocDraft.html">Submit Project Document Draft</a>
+            </li>
+            <li>
+              <a href="SubmitFinalDocsReqEval.html"
+                >Submit Final Documents and Request Evaluation</a
+              >
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a href="#" class="nav-link">Client</a>
+          <ul class="dropdown">
+            <li><a href="SubClientApp.html">Submit Client Application</a></li>
+            <li><a href="CreateProject.html">Create Project</a></li>
+            <li><a href="SubAuthDoc.html">Submit Authorization Document</a></li>
+            <li><a href="SubClientFeedback.html">Submit Client Feedback</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a href="#" class="nav-link">FCRE Employee</a>
+          <ul class="dropdown">
+            <li><a href="AcceptRejectProject.html">Approve Projects</a></li>
+            <li><a href="FormTeams.html">Form Project Teams</a></li>
+            <li><a href="ProvideDocFeed.html">Provide Document Feedback</a></li>
+            <li>
+              <a href="AcceptRejectStudentApp.html"
+                >Student Application Approval</a
+              >
+            </li>
+            <li>
+              <a href="RecordClientInterviewDetails.html"
+                >Record Client Interview Details</a
+              >
+            </li>
+            <li><a href="SendTeamsMessage.html">Send Teams Message</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="form-container container-narrow">
+      <h2 class="form-title">Submit Project Document Draft</h2>
+
+      <p class="text-muted">
+        Select the document type and upload your file below.
+      </p>
+
+      <form id="submitForm">
+        <div class="form-group">
+          <label>Document ID (Auto-Generated)</label>
+          <input
+            type="text"
+            id="documentID"
+            class="input-field input-readonly"
+            readonly
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="projectSelect">
+            Project <span class="required-star">*</span>
+          </label>
+          <select id="projectSelect" class="input-field" required>
+            <option value="">-- Select Your Project --</option>
+            <option value="PRJ-2001">PRJ-2001 — Acme Corp</option>
+            <option value="PRJ-2002">PRJ-2002 — GreenLeaf Non-Profit</option>
+            <option value="PRJ-2003">PRJ-2003 — HealthFirst Clinic</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="docType">
+            Document Type <span class="required-star">*</span>
+          </label>
+          <select id="docType" name="docType" class="input-field" required>
+            <option value="">-- Select Document Type --</option>
+            <option value="charter">Project Charter</option>
+            <option value="report">Final Report</option>
+            <option value="presentation">Final Presentation</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="fileUpload">
+            Upload Document <span class="required-star">*</span>
+          </label>
+          <input
+            type="file"
+            id="fileUpload"
+            name="fileUpload"
+            class="input-field"
+            accept=".pdf,.doc,.docx,.ppt,.pptx"
+            required
+          />
+        </div>
+
+        <button type="submit" class="btn btn-full">Submit Draft</button>
+      </form>
+    </div>
+
+    <script>
+      function generateDocID() {
+        const docNum = Math.floor(6000 + Math.random() * 1000);
+        document.getElementById("documentID").value = "DOC-" + docNum;
+      }
+
+      document
+        .getElementById("submitForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const selection = document.getElementById("docType").value;
+          if (selection === "charter") {
+            window.location.href = "ProChDraftSub.html";
+          } else if (selection === "report") {
+            window.location.href = "ProReportSub.html";
+          } else if (selection === "presentation") {
+            window.location.href = "ProPresSub.html";
+          } else {
+            alert("Please select a document type before submitting.");
+          }
+        });
+    </script>
+  </body>
+</html>

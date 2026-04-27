@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Approval — Project Future</title>
+    <style>
+      /* General Styles */
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f9fa;
+      }
+
+      /* Navigation Bar Styles */
+      nav {
+        background-color: #343a40;
+        display: flex;
+        justify-content: center;
+        padding: 0 20px;
+      }
+
+      .nav-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+      }
+
+      .nav-item {
+        position: relative; /* Essential for dropdown positioning */
+      }
+
+      .nav-link {
+        display: block;
+        color: white;
+        padding: 20px 25px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background 0.3s;
+      }
+
+      .nav-item:hover .nav-link {
+        background-color: #495057;
+      }
+
+      /* Dropdown Menu Styles */
+      .dropdown {
+        display: none; /* Hidden by default */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: white;
+        min-width: 220px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        list-style: none;
+        padding: 10px 0;
+        border-radius: 0 0 4px 4px;
+      }
+
+      .dropdown li a {
+        color: #333;
+        padding: 12px 20px;
+        text-decoration: none;
+        display: block;
+        font-size: 0.9rem;
+      }
+
+      .dropdown li a:hover {
+        background-color: #f1f1f1;
+        color: #007bff;
+      }
+
+      /* Show dropdown on hover */
+      .nav-item:hover .dropdown {
+        display: block;
+      }
+    </style>
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <a href="index.html" class="back-link">&larr; Back to home</a>
+      <h1>Project Future Hub</h1>
+    </header>
+
+    <nav>
+      <ul class="nav-list">
+        <li class="nav-item">
+          <a href="#" class="nav-link">Student</a>
+          <ul class="dropdown">
+            <li><a href="SubStudApp.html">Submit Student Application</a></li>
+            <li>
+              <a href="SubProDocDraft.html">Submit Project Document Draft</a>
+            </li>
+            <li>
+              <a href="SubmitFinalDocsReqEval.html"
+                >Submit Final Documents and Request Evaluation</a
+              >
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a href="#" class="nav-link">Client</a>
+          <ul class="dropdown">
+            <li><a href="SubClientApp.html">Submit Client Application</a></li>
+            <li><a href="CreateProject.html">Create Project</a></li>
+            <li><a href="SubAuthDoc.html">Submit Authorization Document</a></li>
+            <li><a href="SubClientFeedback.html">Submit Client Feedback</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a href="#" class="nav-link">FCRE Employee</a>
+          <ul class="dropdown">
+            <li><a href="AcceptRejectProject.html">Approve Projects</a></li>
+            <li><a href="FormTeams.html">Form Project Teams</a></li>
+            <li><a href="ProvideDocFeed.html">Provide Document Feedback</a></li>
+            <li>
+              <a href="AcceptRejectStudentApp.html"
+                >Student Application Approval</a
+              >
+            </li>
+            <li>
+              <a href="RecordClientInterviewDetails.html"
+                >Record Client Interview Details</a
+              >
+            </li>
+            <li><a href="SendTeamsMessage.html">Send Teams Message</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="form-container container-center">
+      <h2>Accept / Reject Projects</h2>
+      <p class="text-muted">
+        Managing Coordinator: Review pending project submissions below.
+      </p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Project ID</th>
+            <th>Client Name</th>
+            <th>Business Type</th>
+            <th>Project Details</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="row-border">
+            <td>PRJ-2001</td>
+            <td>Acme Corp</td>
+            <td>Technology</td>
+            <td>
+              Build a customer portal with login, dashboard, and reporting
+              features.
+            </td>
+            <td>
+              <button
+                class="btn btn-accept"
+                onclick="window.location.href='AcceptRejectProject2.html'"
+              >
+                Accept
+              </button>
+              <button
+                class="btn btn-reject"
+                onclick="window.location.href='AcceptRejectProject2.html'"
+              >
+                Reject
+              </button>
+            </td>
+          </tr>
+          <tr class="row-alt">
+            <td colspan="5" class="cell-detail">
+              <strong>Client ID:</strong> CLT-1001 &nbsp;|&nbsp;
+              <strong>Email:</strong> contact@acmecorp.com &nbsp;|&nbsp;
+              <strong>Phone:</strong> (555) 123-4567 &nbsp;|&nbsp;
+              <strong>Address:</strong> 100 Main St, Springfield<br />
+              <strong>Interview Notes:</strong> Client is well-organized and
+              responsive. Scope realistic. Recommended for acceptance.<br />
+              <strong>Other Comments:</strong> Prefer agile methodology.
+              Timeline is 3 months.
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="5" class="spacer-row"></td>
+          </tr>
+          <tr class="row-border">
+            <td>PRJ-2002</td>
+            <td>GreenLeaf Non-Profit</td>
+            <td>Non-Profit</td>
+            <td>
+              Design a donation tracking system with donor management and
+              reports.
+            </td>
+            <td>
+              <button
+                class="btn btn-accept"
+                onclick="window.location.href='AcceptRejectProject1.html'"
+              >
+                Accept
+              </button>
+              <button
+                class="btn btn-reject"
+                onclick="window.location.href='AcceptRejectProject1.html'"
+              >
+                Reject
+              </button>
+            </td>
+          </tr>
+          <tr class="row-alt">
+            <td colspan="5" class="cell-detail">
+              <strong>Client ID:</strong> CLT-1002 &nbsp;|&nbsp;
+              <strong>Email:</strong> info@greenleaf.org &nbsp;|&nbsp;
+              <strong>Phone:</strong> (555) 987-6543 &nbsp;|&nbsp;
+              <strong>Address:</strong> 50 Oak Ave, Portland<br />
+              <strong>Interview Notes:</strong> Enthusiastic client. Scope
+              slightly large but manageable. Accessibility required.<br />
+              <strong>Other Comments:</strong> Must be accessible and
+              mobile-friendly.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

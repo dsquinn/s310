@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Future | Create Announcement</title>
+    <style>
+        /* Shared General Styles from Central Hub */
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+
+        /* Shared Navigation Bar Styles */
+        nav {
+        background-color: #343a40;
+        display: flex;
+        justify-content: center;
+        padding: 0 20px;
+      }
+
+      .nav-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+      }
+
+      .nav-item {
+        position: relative; /* Essential for dropdown positioning */
+      }
+
+      .nav-link {
+        display: block;
+        color: white;
+        padding: 20px 25px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background 0.3s;
+      }
+
+      .nav-item:hover .nav-link {
+        background-color: #495057;
+      }
+
+      /* Dropdown Menu Styles */
+      .dropdown {
+        display: none; /* Hidden by default */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: white;
+        min-width: 220px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        list-style: none;
+        padding: 10px 0;
+        border-radius: 0 0 4px 4px;
+      }
+
+      .dropdown li a {
+        color: #333;
+        padding: 12px 20px;
+        text-decoration: none;
+        display: block;
+        font-size: 0.9rem;
+      }
+
+      .dropdown li a:hover {
+        background-color: #f1f1f1;
+        color: #007bff;
+      }
+
+      /* Show dropdown on hover */
+      .nav-item:hover .dropdown {
+        display: block;
+      }
+        /* Announcement Form Specific Styles */
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .form-card {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border-top: 5px solid #343a40;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #212529;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #495057;
+        }
+
+        /* Updated Select and Input Styling */
+        input[type="text"],
+        input[type="date"],
+        input[type="time"],
+        select,
+        textarea,
+        input[type="file"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+            box-sizing: border-box;
+            background-color: white;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .datetime-row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .datetime-row .form-group {
+            flex: 1;
+        }
+
+        .btn-submit {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn-submit:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+            font-size: 0.85rem;
+            border-top: 1px solid #ddd;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="back-link">&larr; Back to home</a>
+        <h1>Project Future Hub</h1>
+      </header>
+
+      <nav>
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="#" class="nav-link">Student</a>
+            <ul class="dropdown">
+              <li><a href="SubStudApp.html">Submit Student Application</a></li>
+              <li>
+                <a href="SubProDocDraft.html">Submit Project Document Draft</a>
+              </li>
+              <li>
+                <a href="SubmitFinalDocsReqEval.html"
+                  >Submit Final Documents and Request Evaluation</a
+                >
+              </li>
+            </ul>
+          </li>
+  
+          <li class="nav-item">
+            <a href="#" class="nav-link">Client</a>
+            <ul class="dropdown">
+              <li><a href="SubClientApp.html">Submit Client Application</a></li>
+              <li><a href="CreateProject.html">Create Project</a></li>
+              <li><a href="SubAuthDoc.html">Submit Authorization Document</a></li>
+              <li><a href="SubClientFeedback.html">Submit Client Feedback</a></li>
+            </ul>
+          </li>
+  
+          <li class="nav-item">
+            <a href="#" class="nav-link">FCRE Employee</a>
+            <ul class="dropdown">
+              <li><a href="AcceptRejectProject.html">Approve Projects</a></li>
+              <li><a href="FormTeams.html">Form Project Teams</a></li>
+              <li><a href="ProvideDocFeed.html">Provide Document Feedback</a></li>
+              <li>
+                <a href="AcceptRejectStudentApp.html"
+                  >Student Application Approval</a
+                >
+              </li>
+              <li>
+                <a href="RecordClientInterviewDetails.html"
+                  >Record Client Interview Details</a
+                >
+              </li>
+              <li><a href="SendTeamsMessage.html">Send Teams Message</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+    <main class="container">
+        <div class="form-card">
+            <h1>Create Announcement</h1>
+            
+            <form action="#" method="POST" enctype="multipart/form-data">
+                
+                <div class="form-group">
+                    <label for="team-select">Select Recipient Team</label>
+                    <select id="team-select" name="team-select" required>
+                        <option value="" disabled selected>-- Choose a Team --</option>
+                        <option value="all">All Teams (General Announcement)</option>
+                        <option value="team-alpha">Team Alpha - Project X</option>
+                        <option value="team-beta">Team Beta - Project Y</option>
+                        <option value="team-gamma">Team Gamma - Project Z</option>
+                        <option value="fcre-staff">Internal FCRE Staff Only</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Subject Line</label>
+                    <input type="text" id="subject" name="subject" placeholder="Enter announcement title" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="content">Announcement Message</label>
+                    <textarea id="content" name="content" placeholder="Enter the full details of your announcement..."></textarea>
+                </div>
+
+                <div class="datetime-row">
+                    <div class="form-group">
+                        <label for="publish-date">Publish Date</label>
+                        <input type="date" id="publish-date" name="publish-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="publish-time">Publish Time</label>
+                        <input type="time" id="publish-time" name="publish-time" required>
+                    </div>
+                </div>
+
+                <div class="form-
